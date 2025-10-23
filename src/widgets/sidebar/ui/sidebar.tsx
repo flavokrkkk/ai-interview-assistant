@@ -1,7 +1,6 @@
 import { useState, useCallback } from "react";
 import { NavLink } from "react-router-dom";
 import {
-  Gauge,
   Settings,
   Home,
   Table,
@@ -15,6 +14,7 @@ import {
 import { cn } from "@/shared/lib/mergeClass";
 import { SidebarNavItem } from "./sidebarNavItem";
 import { SidebarSeparator } from "./sidebarSeparator";
+import { Image } from "@/shared/ui/image/image";
 
 const mainNavItems = [
   { path: "/dashboard", label: "Project Overview", icon: Home },
@@ -44,7 +44,7 @@ export const Sidebar = () => {
   return (
     <div
       className={cn(
-        "flex h-screen flex-col justify-between border-r pb-2 border-gray-200 bg-white shadow-md transition-[width] duration-200 ease-linear overflow-hidden",
+        "flex h-screen flex-col justify-between border-r space-y-2 border-gray-200 bg-white shadow-md transition-[width] duration-200 ease-linear overflow-hidden",
         isExpanded ? "w-64" : "w-16"
       )}
       onMouseEnter={handleMouseEnter}
@@ -52,29 +52,36 @@ export const Sidebar = () => {
     >
       <div
         className={cn(
-          "flex items-center justify-center border-b h-16 bg-zinc-100",
-          isExpanded ? "px-4" : "px-0"
+          "flex items-center justify-center pt-4 pb-2",
+          isExpanded ? "px-4 justify-start" : "px-0"
         )}
       >
         <NavLink
           to="/"
           className={cn(
-            "flex items-center text-gray-900 space-x-2",
+            "flex items-center text-gray-900 space-x-1",
             isExpanded ? "justify-start" : "justify-center w-full"
           )}
         >
-          <Gauge className="h-6 w-6 flex-shrink-0 text-indigo-600" />
-          <span
-            className={cn(
-              "whitespace-nowrap text-xl font-bold",
-              "transition-all duration-150 ease-linear",
-              isExpanded ? "opacity-100 w-auto ml-3" : "opacity-0 w-0 ml-0"
-            )}
-          >
-            {isExpanded && "InterviewBoss"}
-          </span>
+          <Image
+            alt="logo-suspese"
+            src="/images/logo.jpg"
+            className="w-10 h-10 rounded-lg"
+          />
+          {isExpanded && (
+            <span
+              className={cn(
+                "whitespace-nowrap text-xl font-bold",
+                "transition-all duration-150 ease-linear",
+                isExpanded ? "opacity-100 w-auto ml-3" : "opacity-0 w-0 ml-0"
+              )}
+            >
+              AiCource
+            </span>
+          )}
         </NavLink>
       </div>
+      <SidebarSeparator isExpanded={isExpanded} />
 
       <div className="flex flex-grow flex-col justify-start space-y-2 py-2">
         <nav className="flex flex-col space-y-1 px-3">
@@ -102,7 +109,7 @@ export const Sidebar = () => {
 
       <SidebarSeparator isExpanded={isExpanded} />
 
-      <div className="p-3 h-16">
+      <div className="px-4 pb-2">
         <SidebarNavItem
           item={{ path: "/settings", label: "Settings", icon: Settings }}
           isExpanded={isExpanded}

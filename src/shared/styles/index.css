@@ -1,3 +1,11 @@
+@import url("/fonts/stylesheet.css");
+
+
+body {
+  background-color: #f4f4f5;
+  font-family: Aeroport;
+}
+
 @import "tailwindcss";
 @import "tw-animate-css";
 

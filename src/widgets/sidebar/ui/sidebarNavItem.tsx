@@ -16,8 +16,8 @@ export const SidebarNavItem = ({ item, isExpanded }: SidebarNavItemProps) => {
           "flex items-center rounded-lg py-2 transition-colors duration-200 overflow-hidden",
           isExpanded ? "px-3 justify-start" : "px-3 justify-center",
           isActive
-            ? "bg-indigo-500 text-white"
-            : "text-gray-700 hover:bg-gray-100"
+            ? "bg-blue-200 text-blue-600"
+            : "text-zinc-500 hover:bg-gray-100"
         )
       }
       title={item.label}
@@ -28,7 +28,7 @@ export const SidebarNavItem = ({ item, isExpanded }: SidebarNavItemProps) => {
           <item.icon
             className={cn(
               "h-5 w-5 flex-shrink-0",
-              isActive ? "text-white" : "text-gray-500"
+              isActive ? "text-blue-600" : "text-zinc-500"
             )}
           />
           <span
