@@ -6,6 +6,8 @@ import AuthPage from "./(auth)/authPage";
 import { ERouteNames } from "@/shared/lib/routeVariables";
 
 const DashboardPage = lazy(() => import("@/pages/(main)/dashboardPage"));
+const InterviewPage = lazy(() => import("@/pages/(main)/interviewPage"));
+
 const RegisterPage = lazy(() => import("@/pages/(auth)/registerPage"));
 const LoginPage = lazy(() => import("@/pages/(auth)/loginPage"));
 
@@ -30,6 +32,10 @@ export const routes = createBrowserRouter([
               {
                 path: ERouteNames.EMPTY_ROUTE,
                 element: <DashboardPage />,
+              },
+              {
+                path: ERouteNames.INTERVIEW_DETAIL_ROUTE,
+                element: <InterviewPage />,
               },
             ],
           },

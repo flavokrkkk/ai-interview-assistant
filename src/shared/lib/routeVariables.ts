@@ -5,4 +5,5 @@ export const enum ERouteNames {
   AUTH_ROUTE = "auth",
   LOGIN_ROUTE = "login",
   REGISTER_ROUTE = "register",
+  INTERVIEW_DETAIL_ROUTE = "interview/:interviewId",
 }

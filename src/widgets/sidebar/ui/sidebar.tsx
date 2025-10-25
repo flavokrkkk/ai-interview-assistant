@@ -1,37 +1,14 @@
 import { useState, useCallback } from "react";
 import { NavLink } from "react-router-dom";
-import {
-  Settings,
-  Home,
-  Table,
-  Code,
-  Database,
-  Users,
-  HardDrive,
-  Cloud,
-  Globe,
-} from "lucide-react";
 import { cn } from "@/shared/lib/mergeClass";
 import { SidebarNavItem } from "./sidebarNavItem";
 import { SidebarSeparator } from "./sidebarSeparator";
 import { Image } from "@/shared/ui/image/image";
-
-const mainNavItems = [
-  { path: "/dashboard", label: "Project Overview", icon: Home },
-  { path: "/editor", label: "Table Editor", icon: Table },
-  { path: "/sql", label: "SQL Editor", icon: Code },
-];
-
-const betaFeaturesNavItems = [
-  { path: "/database", label: "Database", icon: Database },
-  { path: "/auth", label: "Authentication", icon: Users },
-  { path: "/storage", label: "Storage", icon: HardDrive },
-  { path: "/functions", label: "Edge Functions", icon: Cloud },
-  { path: "/realtime", label: "Realtime", icon: Globe },
-];
+import { betaFeaturesNavItems, mainNavItems } from "../lib/constants";
+import { Avatar, AvatarFallback, AvatarImage } from "@/shared/ui/avatar/avatar";
 
 export const Sidebar = () => {
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const handleMouseEnter = useCallback(() => {
     setIsExpanded(true);
@@ -44,7 +21,7 @@ export const Sidebar = () => {
   return (
     <div
       className={cn(
-        "flex h-screen flex-col justify-between border-r space-y-2 border-gray-200 bg-white shadow-md transition-[width] duration-200 ease-linear overflow-hidden",
+        "flex h-screen flex-col justify-between relative border-r space-y-2 border-gray-200 bg-white shadow-md transition-[width] duration-200 ease-linear overflow-hidden",
         isExpanded ? "w-64" : "w-16"
       )}
       onMouseEnter={handleMouseEnter}
@@ -59,7 +36,7 @@ export const Sidebar = () => {
         <NavLink
           to="/"
           className={cn(
-            "flex items-center text-gray-900 space-x-1",
+            "flex items-center text-gray-900",
             isExpanded ? "justify-start" : "justify-center w-full"
           )}
         >
@@ -107,13 +84,21 @@ export const Sidebar = () => {
         </nav>
       </div>
 
-      <SidebarSeparator isExpanded={isExpanded} />
-
-      <div className="px-4 pb-2">
-        <SidebarNavItem
-          item={{ path: "/settings", label: "Settings", icon: Settings }}
-          isExpanded={isExpanded}
-        />
+      <div className="px-4 -space-x-1 absolute bottom-0 w-full bg-white flex items-center h-16 rounded-lg cursor-pointer">
+        <Avatar>
+          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        <div
+          className={cn(
+            "whitespace-nowrap text-sm font-medium flex flex-col justify-center pb-1.5",
+            "transition-all duration-150 ease-linear",
+            isExpanded ? "opacity-100 w-auto ml-3" : "opacity-0 w-0 ml-0"
+          )}
+        >
+          <span>Егор</span>
+          <p className="text-xs text-zinc-500 leading-2 ">Frontend Developer</p>
+        </div>
       </div>
     </div>
   );

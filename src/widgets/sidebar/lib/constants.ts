@@ -1,4 +1,10 @@
-import { Building, ClipboardList, Cloud, UserCheck } from "lucide-react";
+import {
+  Building,
+  ClipboardList,
+  Cloud,
+  HardDrive,
+  Settings,
+} from "lucide-react";
 
 export const mainNavItems = [
   { icon: Cloud, label: "AI Mock Interview", path: "/mock-interview" },
@@ -6,6 +12,7 @@ export const mainNavItems = [
 ];
 
 export const betaFeaturesNavItems = [
-  { icon: UserCheck, label: "CV Scorer", path: "/cv-scorer" },
+  { icon: HardDrive, label: "CV Scorer", path: "/cv-scorer" },
   { icon: Building, label: "Company Researcher", path: "/company-researcher" },
+  { path: "/settings", label: "Settings", icon: Settings },
 ];
